@@ -1,20 +1,22 @@
+import { Route, Routes } from 'react-router-dom'
+
 /* Components */
-import { CountryList } from './components/CountryList'
 import { Header } from './components/Header'
-import { SearchBar } from './components/SearchBar'
 /* Page`s */
 import { DetailsPage } from './page/DetailsPage'
 import { MainPage } from './page/MainPage'
+import { NotPageFound } from './page/NotPageFound'
 
 export const App = () => {
   return (
     <>
       <Header />
 
-      <SearchBar />
-
-      <MainPage />
-      <DetailsPage />
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route path="details/:countryId" element={<DetailsPage />} />
+        <Route path="*" element={<NotPageFound />} />
+      </Routes>
     </>
   )
 }
