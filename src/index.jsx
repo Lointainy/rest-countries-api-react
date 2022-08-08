@@ -4,6 +4,7 @@ import { App } from './App'
 
 /* STYLE */
 import '@/assets/scss/main.scss'
+import './index.css'
 
 /* font */
 import '@fontsource/nunito-sans'
