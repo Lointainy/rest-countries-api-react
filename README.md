@@ -13,7 +13,7 @@
 
 ## Overview
 
-![screenshot](./design/preview.jpg)
+![screenshot](./design/desktop-preview.jpg)
 
 ###### Description:
 
@@ -58,4 +58,3 @@ Your [challenge](https://www.frontendmentor.io/challenges/rest-countries-api-wit
 ###### Author
 
 [![Lointainy](https://img.shields.io/badge/-lointainy-333?style=for-the-badge&logo=github&&logoColor=FFF)](https://github.com/Lointainy)
-
