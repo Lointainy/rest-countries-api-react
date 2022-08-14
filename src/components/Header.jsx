@@ -23,7 +23,7 @@ export const Header = () => {
 
   return (
     <div className="header bg-secondary shadow-primary h-20 text-primary">
-      <div className="header__content container flex justify-between h-full items-center">
+      <div className="header__content container flex justify-between h-full items-center sm:p-0 px-4">
         <div className="header__logo text-2xl font-extrabold">
           <Link to="/">Where in the world?</Link>
         </div>
