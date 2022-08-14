@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { App } from './App'
+import { CountryProvider } from './hooks/Context'
 
 /* STYLE */
 import '@/assets/scss/main.scss'
@@ -13,14 +14,25 @@ import '@fontsource/nunito-sans'
 
 /* Icons */
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMoon, faSearch, faSun } from '@fortawesome/free-solid-svg-icons'
+import {
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faChevronUp,
+  faMoon,
+  faPlus,
+  faSearch,
+  faSun,
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faMoon, faSun, faSearch)
+library.add(faMoon, faSun, faSearch, faPlus, faChevronDown, faChevronLeft, faChevronRight, faChevronUp)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <CountryProvider>
+      <Router>
+        <App />
+      </Router>
+    </CountryProvider>
   </React.StrictMode>
 )
