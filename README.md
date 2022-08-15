@@ -42,8 +42,10 @@ Your [challenge](https://www.frontendmentor.io/challenges/rest-countries-api-wit
   - - function components
   - Props
   - Hooks
+  - - useState
   - - useEffect
   - - useContext
+  - - useReducer
   - Router
 - Vite
   - create basic config
