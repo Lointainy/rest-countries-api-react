@@ -1,19 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CountryContext } from '../hooks/Context'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Header = () => {
-  const [userTheme, setUserTheme] = useState('light-theme')
+  const { getTheme } = useContext(CountryContext)
+  const [userTheme, setUserTheme] = useState(getTheme)
 
   const toggleTheme = () => {
-    const activeTheme = localStorage.getItem('user-theme')
-    activeTheme === 'light-theme' ? setUserTheme('dark-theme') : setUserTheme('light-theme')
-    userTheme === 'light-theme' ? uploadTheme('dark-theme') : uploadTheme('light-theme')
-  }
-
-  const uploadTheme = (theme) => {
-    localStorage.setItem('user-theme', theme)
+    userTheme === 'dark-theme' ? setUserTheme('light-theme') : setUserTheme('dark-theme')
   }
 
   useEffect(() => {

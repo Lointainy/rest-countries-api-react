@@ -16,6 +16,18 @@ export const CountryProvider = ({ children }) => {
   const [search, setSearch] = useState('') // input value search
   const [filter, setFilter] = useState('') // input value filter
 
+  /* get theme */
+
+  const getTheme = () => {
+    const theme = localStorage.getItem('user-theme')
+    if (theme) {
+      return theme
+    } else {
+      localStorage.setItem('user-theme', 'dark-theme')
+      return 'dark-theme'
+    }
+  }
+
   /* SEARCH, FILTER */
 
   const handleSearch = (value) => {
@@ -65,6 +77,7 @@ export const CountryProvider = ({ children }) => {
 
   const value = {
     ...state,
+    getTheme,
     search,
     filter,
     handleSearch,
