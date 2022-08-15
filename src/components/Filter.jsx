@@ -34,10 +34,12 @@ export const Filter = () => {
             className="search__btn flex items-center justify-center absolute right-4 top-4 origin-center rotate-45 cursor-pointer bg-primary w-6 h-6 rounded-xl text-primary hover:text-[color:var(--color-bg-secondary)] hover:bg-[color:var(--color-text-primary)] transition duration-250 ease-out hover:ease-in">
             <FontAwesomeIcon className="search__btn-icon" icon="plus" />
           </button>
-        ) : dropdown ? (
-          <FontAwesomeIcon icon="chevron-up" />
         ) : (
-          <FontAwesomeIcon icon="chevron-down" />
+          <FontAwesomeIcon
+            icon="chevron-down"
+            className="transition ease-in-out duration-300"
+            style={dropdown ? { transform: 'rotate(180deg)' } : {}}
+          />
         )}
       </div>
 
