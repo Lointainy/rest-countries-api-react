@@ -9,16 +9,20 @@ export const CountryCard = ({ country }) => {
         <ul className="country-subtitle__list flex flex-col gap-1">
           <li className="country-subtitle__list-item font-light text-sm">
             <span className="font-semibold mr-2">Population:</span>
-            {country.population}
+            {country.population.toLocaleString()}
           </li>
           <li className="country-subtitle__list-item font-light text-sm">
             <span className="font-semibold mr-2">Region:</span>
             {country.region}
           </li>
-          <li className="country-subtitle__list-item font-light text-sm">
-            <span className="font-semibold mr-2">Capital:</span>
-            {country.capital}
-          </li>
+          {country.capital ? (
+            <li className="country-subtitle__list-item font-light text-sm">
+              <span className="font-semibold mr-2">Capital:</span>
+              {country.capital.join(', ')}
+            </li>
+          ) : (
+            ''
+          )}
         </ul>
         {/* <div className="">{country.cca3}</div> */}
       </div>
