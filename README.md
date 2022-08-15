@@ -25,6 +25,7 @@ Your [challenge](https://www.frontendmentor.io/challenges/rest-countries-api-wit
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- - [tailwind](https://tailwindcss.com)
 - Node modules
   - [eslint](https://eslint.org/)
   - [prettier](https://prettier.io/)
@@ -55,7 +56,7 @@ Your [challenge](https://www.frontendmentor.io/challenges/rest-countries-api-wit
 
 ![complete](https://img.shields.io/badge/project_created:-08.08.2022-333?style=for-the-badge&labelColor=e7901f)
 
-![update](https://img.shields.io/badge/last_update:-08.08.22-333?style=for-the-badge&labelColor=1fe783)
+![update](https://img.shields.io/badge/last_update:-15.08.22-333?style=for-the-badge&labelColor=1fe783)
 
 ###### Author
 
