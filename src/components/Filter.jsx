@@ -42,7 +42,7 @@ export const Filter = () => {
       </div>
 
       {dropdown ? (
-        <div className="filter-list absolute text-primary mt-1 w-full rounded-[0.35rem] bg-secondary p-2 flex flex-wrap">
+        <div className="filter-list absolute text-primary mt-1 w-full rounded-[0.35rem] bg-secondary p-2 flex flex-wrap shadow-primary">
           {filterList.map((item, index) => {
             return (
               <label
