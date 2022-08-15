@@ -1,3 +1,25 @@
+@layer base {
+  :root.dark-theme {
+    --color-bg-primary: #202c36;
+    --color-bg-secondary: #2b3844;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e2e8f0;
+    --color-box-shadow: 0 2px 9px rgb(0 0 0 5.32%);
+  }
+
+  :root.light-theme {
+    --color-bg-primary: #f2f2f2;
+    --color-bg-secondary: #ffffff;
+    --color-text-primary: #111517;
+    --color-text-secondary: #848484;
+    --color-box-shadow: 0 0 7px 2px rgb(0 0 0 / 2.94%);
+  }
+}
+
+body {
+  background-color: var(--color-bg-primary);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
