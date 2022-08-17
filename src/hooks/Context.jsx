@@ -74,10 +74,23 @@ export const CountryProvider = ({ children }) => {
     filteredListCountries,
     handlePageClick,
 
-    //reducer
-    getCountriesFromApi: (data) => {
-      dispatch({ type: 'GEP_COUNTRIES_API', payload: data })
-    },
+    /* REDUCER */
+
+    getCountriesFromApi: () => {
+      fetch('https://restcountries.com/v3.1/all')
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({ type: 'GET_COUNTRIES_API', payload: data })
+        })
+    }, // get all countries data
+
+    getCountryFromApi: (countryName) => {
+      fetch(`https://restcountries.com/v3.1/alpha/${countryName}`)
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({ type: 'GET_COUNTRY_API', payload: data })
+        })
+    }, // get selected country data
   }
 
   return <CountryContext.Provider value={value}>{children}</CountryContext.Provider>
