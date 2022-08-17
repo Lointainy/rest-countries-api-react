@@ -75,8 +75,12 @@ export const CountryProvider = ({ children }) => {
     handlePageClick,
 
     //reducer
-    getCountriesFromApi: (data) => {
-      dispatch({ type: 'GEP_COUNTRIES_API', payload: data })
+    getCountriesFromApi: () => {
+      fetch('https://restcountries.com/v3.1/all')
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({ type: 'GEP_COUNTRIES_API', payload: data })
+        })
     },
   }
 

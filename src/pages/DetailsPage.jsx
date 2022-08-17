@@ -1,11 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export const DetailsPage = () => {
   const { countryId } = useParams()
 
+  /* Back to last page */
+
   let navigate = useNavigate()
   const goBack = () => navigate(-1)
+
+  useEffect(() => {}, [])
   return (
     <div className="details-country mt-20 container">
       <button
