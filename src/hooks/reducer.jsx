@@ -17,6 +17,11 @@ export const reducer = (state, { type, payload }) => {
         ...state,
         country: payload || [],
       }
+    case 'ON_LOADING':
+      return {
+        ...state,
+        isLoading: payload,
+      }
     default:
       return state
   }

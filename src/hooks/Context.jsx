@@ -77,18 +77,22 @@ export const CountryProvider = ({ children }) => {
     /* REDUCER */
 
     getCountriesFromApi: () => {
+      dispatch({ type: 'ON_LOADING', payload: true })
       fetch('https://restcountries.com/v3.1/all')
         .then((res) => res.json())
         .then((data) => {
           dispatch({ type: 'GET_COUNTRIES_API', payload: data })
+          dispatch({ type: 'ON_LOADING', payload: false })
         })
     }, // get all countries data
 
     getCountryFromApi: (countryName) => {
+      dispatch({ type: 'ON_LOADING', payload: true })
       fetch(`https://restcountries.com/v3.1/alpha/${countryName}`)
         .then((res) => res.json())
         .then((data) => {
           dispatch({ type: 'GET_COUNTRY_API', payload: data })
+          dispatch({ type: 'ON_LOADING', payload: false })
         })
     }, // get selected country data
   }
