@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+
 import { CountryDetailsCard } from '../components/CountryDetailsCard'
+import { Loader } from '../components/Loader'
 
 import { CountryContext } from '../hooks/Context'
 
 export const DetailsPage = () => {
   const { countryId } = useParams()
-  const { getCountryFromApi, country } = useContext(CountryContext)
+  const { getCountryFromApi, country, isLoading } = useContext(CountryContext)
 
   /* Back to last page */
 
@@ -29,9 +31,13 @@ export const DetailsPage = () => {
         <FontAwesomeIcon className="mr-[0.625rem]" icon="arrow-left-long" />
         Back
       </button>
-      {country.map((item, index) => {
-        return <CountryDetailsCard country={item} key={index} />
-      })}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        country.map((item, index) => {
+          return <CountryDetailsCard country={item} key={index} />
+        })
+      )}
     </div>
   )
 }

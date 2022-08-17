@@ -2,10 +2,11 @@ import { useContext, useEffect } from 'react'
 import { CountryContext } from '../hooks/Context'
 
 import { CountryList } from '../components/CountryList'
+import { Loader } from '../components/Loader'
 import { SearchBar } from '../components/SearchBar'
 
 export const MainPage = () => {
-  const { getCountriesFromApi } = useContext(CountryContext)
+  const { getCountriesFromApi, isLoading } = useContext(CountryContext)
 
   useEffect(function getCountries() {
     getCountriesFromApi()
@@ -14,7 +15,7 @@ export const MainPage = () => {
   return (
     <>
       <SearchBar />
-      <CountryList />
+      {isLoading ? <Loader /> : <CountryList />}
     </>
   )
 }
