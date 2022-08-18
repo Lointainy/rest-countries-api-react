@@ -30,10 +30,10 @@ library.add(faMoon, faSun, faSearch, faPlus, faChevronDown, faChevronLeft, faChe
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CountryProvider>
-      <Router>
+    <Router>
+      <CountryProvider>
         <App />
-      </Router>
-    </CountryProvider>
+      </CountryProvider>
+    </Router>
   </React.StrictMode>
 )
