@@ -1,4 +1,5 @@
 import { createContext, useEffect, useReducer, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { initialState, reducer } from './reducer'
 
 export const CountryContext = createContext()
@@ -13,17 +14,24 @@ export const CountryProvider = ({ children }) => {
 
   const [currentPage, setCurrentPage] = useState(1) // currentPage from counries array
 
-  const [search, setSearch] = useState('') // input value search
-  const [filter, setFilter] = useState('') // input value filter
+  const [searchParams, setSearchParams] = useSearchParams() // search params get set data from link property
+  const [params, setParams] = useState({ country: '', region: '' }) // search params
+
+  const [search, setSearch] = useState(searchParams.get('country') || '') // input value search
+  const [filter, setFilter] = useState(searchParams.get('region') || '') // input value filter
 
   /* SEARCH, FILTER */
 
   const handleSearch = (value) => {
+    setParams({ ...params, country: value })
     setSearch(value)
+    setSearchParams({ ...params, country: value })
   }
 
   const handleFilter = (value) => {
+    setParams({ ...params, region: value })
     setFilter(value)
+    setSearchParams({ ...params, region: value })
   }
 
   /* PAGINATION */
@@ -74,10 +82,27 @@ export const CountryProvider = ({ children }) => {
     filteredListCountries,
     handlePageClick,
 
-    //reducer
-    getCountriesFromApi: (data) => {
-      dispatch({ type: 'GEP_COUNTRIES_API', payload: data })
-    },
+    /* REDUCER */
+
+    getCountriesFromApi: () => {
+      dispatch({ type: 'ON_LOADING', payload: true })
+      fetch('https://restcountries.com/v3.1/all')
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({ type: 'GET_COUNTRIES_API', payload: data })
+          dispatch({ type: 'ON_LOADING', payload: false })
+        })
+    }, // get all countries data
+
+    getCountryFromApi: (countryName) => {
+      dispatch({ type: 'ON_LOADING', payload: true })
+      fetch(`https://restcountries.com/v3.1/alpha/${countryName}`)
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({ type: 'GET_COUNTRY_API', payload: data })
+          dispatch({ type: 'ON_LOADING', payload: false })
+        })
+    }, // get selected country data
   }
 
   return <CountryContext.Provider value={value}>{children}</CountryContext.Provider>
