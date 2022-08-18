@@ -38,7 +38,7 @@ export const CountryDetailsCard = ({ country }) => {
           <ul className="country__details-list flex flex-col flex-wrap gap-2 text-[0.875rem] lg:text-base lg:font-light">
             <li className="country__details-list-item">
               <span className="font-semibold mr-1">Top Level Domain:</span>
-              {country.tld.join(', ')}
+              {country.tld ? country.tld.join(', ') : ''}
             </li>
             <li className="country__details-list-item flex">
               <span className="font-semibold mr-1">Currencies:</span>
