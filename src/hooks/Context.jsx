@@ -1,8 +1,12 @@
 import { createContext, useEffect, useReducer, useState } from 'react'
+
 import { useSearchParams } from 'react-router-dom'
+
+/* STORE */
+
 import { initialState, reducer } from './reducer'
 
-import { BASE_URL } from '../api/config'
+/* API */
 
 import { getCountries } from '../api/getCountries'
 import { getCountry } from '../api/getCountry'
