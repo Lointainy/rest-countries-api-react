@@ -4,6 +4,9 @@ import { initialState, reducer } from './reducer'
 
 import { BASE_URL } from '../api/config'
 
+import { getCountries } from '../api/getCountries'
+import { getCountry } from '../api/getCountry'
+
 export const CountryContext = createContext()
 
 export const CountryProvider = ({ children }) => {
@@ -86,24 +89,18 @@ export const CountryProvider = ({ children }) => {
 
     /* REDUCER */
 
-    getCountriesFromApi: () => {
+    getCountriesFromApi: async () => {
       dispatch({ type: 'ON_LOADING', payload: true })
-      fetch(`${BASE_URL}/all`)
-        .then((res) => res.json())
-        .then((data) => {
-          dispatch({ type: 'GET_COUNTRIES_API', payload: data })
-          dispatch({ type: 'ON_LOADING', payload: false })
-        })
+      const countriesDataFromApi = await getCountries()
+      dispatch({ type: 'GET_COUNTRIES_API', payload: countriesDataFromApi })
+      dispatch({ type: 'ON_LOADING', payload: false })
     }, // get all countries data
 
-    getCountryFromApi: (countryName) => {
+    getCountryFromApi: async (countryName) => {
       dispatch({ type: 'ON_LOADING', payload: true })
-      fetch(`${BASE_URL}/alpha/${countryName}`)
-        .then((res) => res.json())
-        .then((data) => {
-          dispatch({ type: 'GET_COUNTRY_API', payload: data })
-          dispatch({ type: 'ON_LOADING', payload: false })
-        })
+      const countryDataFromApi = await getCountry(countryName)
+      dispatch({ type: 'GET_COUNTRY_API', payload: countryDataFromApi })
+      dispatch({ type: 'ON_LOADING', payload: false })
     }, // get selected country data
   }
 
