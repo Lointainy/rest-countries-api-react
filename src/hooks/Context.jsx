@@ -2,6 +2,8 @@ import { createContext, useEffect, useReducer, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { initialState, reducer } from './reducer'
 
+import { BASE_URL } from '../api/config'
+
 export const CountryContext = createContext()
 
 export const CountryProvider = ({ children }) => {
@@ -86,7 +88,7 @@ export const CountryProvider = ({ children }) => {
 
     getCountriesFromApi: () => {
       dispatch({ type: 'ON_LOADING', payload: true })
-      fetch('https://restcountries.com/v3.1/all')
+      fetch(`${BASE_URL}/all`)
         .then((res) => res.json())
         .then((data) => {
           dispatch({ type: 'GET_COUNTRIES_API', payload: data })
@@ -96,7 +98,7 @@ export const CountryProvider = ({ children }) => {
 
     getCountryFromApi: (countryName) => {
       dispatch({ type: 'ON_LOADING', payload: true })
-      fetch(`https://restcountries.com/v3.1/alpha/${countryName}`)
+      fetch(`${BASE_URL}/alpha/${countryName}`)
         .then((res) => res.json())
         .then((data) => {
           dispatch({ type: 'GET_COUNTRY_API', payload: data })
