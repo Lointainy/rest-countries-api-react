@@ -1,15 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { getCountry } from '../store/countriesSlice'
 
 import { CountryDetailsCard } from '../components/CountryDetailsCard'
 import { Loader } from '../components/Loader'
 
-import { CountryContext } from '../hooks/Context'
-
 export const DetailsPage = () => {
   const { countryId } = useParams()
-  const { getCountryFromApi, country, isLoading } = useContext(CountryContext)
+
+  const isLoading = useSelector((store) => store.countries.isLoading)
+  const country = useSelector((store) => store.countries.country)
+  const dispatch = useDispatch()
 
   /* Back to last page */
 
@@ -17,12 +21,9 @@ export const DetailsPage = () => {
   const goBack = () => navigate(-1)
 
   useEffect(() => {
-    getCountryFromApi(countryId)
-  }, [])
-
-  useEffect(() => {
-    getCountryFromApi(countryId)
+    dispatch(getCountry(countryId))
   }, [countryId])
+
   return (
     <div className="details-country mt-12 container md:p-0 px-4">
       <button
