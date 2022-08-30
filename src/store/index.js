@@ -1,9 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import counriesReducer from './countriesSlice'
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    countriesStore: counriesReducer,
+    countries: counriesReducer,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: false,
