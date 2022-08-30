@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext, useEffect, useState } from 'react'
-import { CountryContext } from '../hooks/Context'
+import { useState } from 'react'
 
-export const Filter = () => {
-  const { handleFilter, filter } = useContext(CountryContext)
+import { useDispatch } from 'react-redux'
+import { filteredCountries, ON_FILTER } from '../store/countriesSlice'
+
+export const Filter = ({ filter }) => {
+  const dispatch = useDispatch()
 
   const [dropdown, setDropdown] = useState(false) // toggle filtermenu
   const [filterList, setFilterList] = useState([
@@ -28,7 +30,7 @@ export const Filter = () => {
         {filter ? (
           <button
             onClick={() => {
-              handleFilter('')
+              dispatch(ON_FILTER(''))
               setDropdown(false)
             }}
             className="search__btn flex items-center justify-center absolute right-4 top-4 origin-center rotate-45 cursor-pointer bg-primary w-6 h-6 rounded-xl text-primary hover:text-[color:var(--color-bg-secondary)] hover:bg-[color:var(--color-text-primary)] transition duration-250 ease-out hover:ease-in">
@@ -54,7 +56,7 @@ export const Filter = () => {
                 <input
                   value={item.name}
                   onChange={(e) => {
-                    handleFilter(e.target.value)
+                    dispatch(ON_FILTER(e.target.value))
                     handleDropDown()
                   }}
                   className="hidden"
