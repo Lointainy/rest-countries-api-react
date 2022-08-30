@@ -51,7 +51,12 @@ Your [challenge](https://www.frontendmentor.io/challenges/rest-countries-api-wit
   - - Routes
   - - Route
   - - Link
-  - - Router hooks (useNavigate, useParams, useSearchParams)
+  - - Router hooks ( useNavigate, useParams, useSearchParams )
+  - Redux ( store )
+  - - redux toolkit
+  - - createAsyncThunk
+  - - useSelector
+  - - useDispatch
 - Vite
   - create basic config
   - connect assets
@@ -60,7 +65,7 @@ Your [challenge](https://www.frontendmentor.io/challenges/rest-countries-api-wit
 
 ![complete](https://img.shields.io/badge/project_created:-08.08.2022-333?style=for-the-badge&labelColor=e7901f)
 
-![update](https://img.shields.io/badge/last_update:-22.08.22-333?style=for-the-badge&labelColor=1fe783)
+![update](https://img.shields.io/badge/last_update:-30.08.22-333?style=for-the-badge&labelColor=1fe783)
 
 ###### Author
 
