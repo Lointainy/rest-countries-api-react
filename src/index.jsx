@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { App } from './App'
-import { CountryProvider } from './hooks/Context'
+
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 /* STYLE */
 import '@/assets/scss/main.scss'
@@ -31,9 +33,9 @@ library.add(faMoon, faSun, faSearch, faPlus, faChevronDown, faChevronLeft, faChe
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
-      <CountryProvider>
+      <Provider store={store}>
         <App />
-      </CountryProvider>
+      </Provider>
     </Router>
   </React.StrictMode>
 )

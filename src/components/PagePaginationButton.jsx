@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext } from 'react'
-import { CountryContext } from '../hooks/Context'
+import { useDispatch } from 'react-redux'
+import { ON_PAGE } from '../store/countriesSlice'
 
 export const PagePaginationButton = ({ iconName, pageNumber, disabledButton }) => {
-  const { handlePageClick } = useContext(CountryContext)
+  const dispatch = useDispatch()
+
+  const handlePageClick = (value) => {
+    dispatch(ON_PAGE(value))
+  }
 
   return (
     <button
