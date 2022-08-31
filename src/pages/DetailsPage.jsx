@@ -18,7 +18,10 @@ export const DetailsPage = () => {
   /* Back to last page */
 
   let navigate = useNavigate()
-  const goBack = () => navigate(-1)
+
+  const goBack = () => {
+    window.history.length <= 1 ? navigate('/') : navigate(-1)
+  }
 
   useEffect(() => {
     dispatch(getCountry(countryId))
